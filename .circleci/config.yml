@@ -8,7 +8,18 @@ jobs:
     executor: gcp-cli/default
     steps:
       - gcp-cli/install
-
+      - gcp-cli/initialize
+      - run:
+          name: check
+          command: |
+            gcloud auth list
+      - run:
+          name: SSH
+          command: |
+            gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --command="bash -s" \<<EOF
+              whoami
+              ls -laH
+            EOF
 workflows:
   main:
     jobs:
