@@ -9,6 +9,9 @@ jobs:
     steps:
       - gcp-cli/install
       - gcp-cli/initialize
+      - add_ssh_keys:
+          fingerprints:
+            - "13:6a:3d:36:89:7b:6b:b3:c6:18:68:1d:4a:5f:55:32"
       - run:
           name: check
           command: |
