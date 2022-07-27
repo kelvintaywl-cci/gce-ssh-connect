@@ -21,6 +21,10 @@ jobs:
           command: |
             ls -laH ~/.ssh/
       - run:
+          name: generate public key from SSH key
+          command: |
+            ssh-keygen -f ~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d -y > ~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d.pub
+      - run:
           name: SSH
           command: |
             gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --ssh-key-file=~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d --command="bash -s" \<<EOF
