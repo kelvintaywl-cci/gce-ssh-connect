@@ -11,19 +11,19 @@ jobs:
       - gcp-cli/initialize
       - add_ssh_keys:
           fingerprints:
-            - "13:6a:3d:36:89:7b:6b:b3:c6:18:68:1d:4a:5f:55:32"
+            - "10:4c:19:2f:aa:47:b4:ea:72:c1:58:08:61:64:0c:5d"
       - run:
           name: check
           command: |
             gcloud auth list
-#       - run:
-#           name: check known hosts
-#           command: |
-#             cat ~/.ssh/known_hosts
+      - run:
+          name: check keys
+          command: |
+            ls -laH ~/.ssh/
       - run:
           name: SSH
           command: |
-            gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --ssh-key-file=~/.ssh/id_rsa_136a3d36897b6bb3c618681d4a5f5532 --command="bash -s" \<<EOF
+            gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --ssh-key-file=~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d --command="bash -s" \<<EOF
               whoami
               ls -laH
             EOF
