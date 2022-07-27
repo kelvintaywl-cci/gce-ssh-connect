@@ -13,13 +13,13 @@ jobs:
           fingerprints:
             - "10:4c:19:2f:aa:47:b4:ea:72:c1:58:08:61:64:0c:5d"
       - run:
-          name: check known hosts
-          command: |
-            cat ~/.ssh/known_hosts
-      - run:
           name: check
           command: |
             gcloud auth list
+      - run:
+          name: check known hosts
+          command: |
+            cat ~/.ssh/known_hosts
       - run:
           name: SSH
           command: |
