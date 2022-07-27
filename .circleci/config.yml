@@ -27,7 +27,7 @@ jobs:
       - run:
           name: SSH
           command: |
-            gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --ssh-key-file=~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d --command="bash -s" \<<EOF
+            gcloud compute ssh --zone "${GOOGLE_COMPUTE_ZONE}" "test-circleci"  --project "${GOOGLE_PROJECT_ID}" --ssh-key-file=~/.ssh/id_rsa_104c192faa47b4ea72c1580861640c5d --troubleshoot --ssh-flag="-vvv" --command="bash -s" \<<EOF
               whoami
               ls -laH
             EOF
